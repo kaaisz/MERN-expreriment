@@ -1,7 +1,21 @@
 // file for entry point
+
+// prepare express and mongoose
 const express = require('express');
+const mongoose = require('mongoose')
 
 const app = express();
+
+// DB config
+const db = require('./config/keys').mongoURI;
+
+// connect to mongoDB through mongoose
+mongoose
+  .connect(db)
+  // if it's successfully connected - then, unsuccessful - catch:
+  .then(() => console.log('MongoDB connected'))
+  // if the authentication failed or some other error has found out, throw error message
+  .catch(err => console.log(err));
 
 // we're gonna wanna create just a simple route to get something up and and running
 // we'll be putting our routes in different files using the express route.
