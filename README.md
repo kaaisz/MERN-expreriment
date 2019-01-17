@@ -18,7 +18,7 @@
 - Use Redux for state management
 - Prepare, build and deploy to Heroku
 
-courtesy for this project repos: https://github.com/bradtravesy/devconnector
+courtesy for this project repo: https://github.com/bradtravesy/devconnector
 
 ## Creating Process
 
@@ -45,3 +45,17 @@ courtesy for this project repos: https://github.com/bradtravesy/devconnector
 ```$ npm i -D nodemon```
 
 \*nodemon is a package for watching updates instead of we'll watch & keep update it manually
+
+## 2. Setup server
+
+[See actual code](https://github.com/suzydp/MERN-expreriment/commit/f163cc040ce76ddd3a4d456655eae6aff9f121e6)
+
+Also, we need to modify `"scripts"` in package.json *to run server.js by using command `$npm start`*
+`"start"` is for running node, `"server"` is for watching with nodemon
+
+```"scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+  },```
+
+then, run with `$ npm run server`. server will automatically reload when something has changed.
