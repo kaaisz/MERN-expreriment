@@ -46,7 +46,7 @@ courtesy for this project repo: https://github.com/bradtravesy/devconnector
 
 \*nodemon is a package for watching updates instead of we'll watch & keep update it manually
 
-## 2. Setup server
+### 2. Setup server
 
 [See actual code](https://github.com/suzydp/MERN-expreriment/commit/f163cc040ce76ddd3a4d456655eae6aff9f121e6)
 
@@ -62,7 +62,7 @@ Also, we need to modify `"scripts"` in package.json *to run server.js by using c
 
 then, run with `$ npm run server`. server will automatically reload when something has changed.
 
-## 3. Connect with MongoDB
+### 3. Connect with MongoDB
 
 1. create `/config/keys.js`, then add code below:
 
@@ -80,7 +80,7 @@ module.exports = {
 
 [See actual code](https://github.com/suzydp/MERN-expreriment/commit/1a95f2726fe93787adbedcd40785d3f836a72164)
 
-## 4. Route files with express router
+### 4. Route files with express router
 
 1. Create directory and files for testing routes below:
 
