@@ -4,6 +4,11 @@
 const express = require('express');
 const mongoose = require('mongoose')
 
+// route by importing files
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const posts = require('./routes/api/posts');
+
 const app = express();
 
 // DB config
@@ -25,6 +30,11 @@ app.get('/', (req, res) =>
   // {});
   res.send('Hello, express with node.js')
 );
+
+// Use routes
+app.use('/api/users/', users);
+app.use('/api/profile/', profile);
+app.use('/api/posts/', posts);
 
 // to run the server either (in this case with Heroku), or locally
 const port = process.env.PORT || 5000;
