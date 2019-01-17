@@ -79,3 +79,33 @@ module.exports = {
 2. Modify `server.js`
 
 [See actual code](https://github.com/suzydp/MERN-expreriment/commit/1a95f2726fe93787adbedcd40785d3f836a72164)
+
+## 4. Route files with express router
+
+1. Create directory and files for testing routes below:
+
+```
+  routes
+  └── api
+       ├── posts.js
+       ├── profile.js
+       └── users.js
+```
+
+2. Route each files with the codes below:
+
+[See actual code](https://github.com/suzydp/MERN-expreriment/commit/d5117c1ba76534231fa1b023f8a8b07f9029d919)
+
+3. Test routing on your browser.
+
+If routing has been successfully finished, this message will appear
+
+```
+{"msg":"xxx Works"}
+```
+
+If not, this message will appear
+
+```
+Cannot GET /api/post/test
+```
