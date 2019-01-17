@@ -9,7 +9,7 @@ const app = express();
 // put route directory, then request and response objects as parameters
 app.get('/', (req, res) => 
   // {});
-  res.send('Hello, express')
+  res.send('Hello, express with node.js')
 );
 
 // to run the server either (in this case with Heroku), or locally
