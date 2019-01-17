@@ -23,10 +23,14 @@ courtesy for this project repos: https://github.com/bradtravesy/devconnector
 ## Creating Process
 
 ### 1. Setup environment
+
 - MongoDB setup with [Mlab](https://mlab.com)
 - `npm init`
+
 - install packages
-```$ npm i express mongoose passport passport-jwt jsonwebtoken body-parser bcryptjs validator```
+
+  ```$ npm i express mongoose passport passport-jwt jsonwebtoken body-parser bcryptjs validator```
+
   - `express` - node.js framework
   - `mongoose` - to connect with mongoDB
   - `passport` - to use for authentication
@@ -35,6 +39,9 @@ courtesy for this project repos: https://github.com/bradtravesy/devconnector
   - `body-perser` - to take the data throughout the request
   - `bcryptjs` - to use bcrypt with js (password hashing function - https://en.wikipedia.org/wiki/Bcrypt)
   - `validator` - to use validation
+
 - install nodemon to dev-dependencies
+
 ```$ npm i -D nodemon```
-* nodemon is a package for watching updates instead of we'll watch & keep update it manually
+
+\*nodemon is a package for watching updates instead of we'll watch & keep update it manually
