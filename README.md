@@ -53,9 +53,29 @@ courtesy for this project repo: https://github.com/bradtravesy/devconnector
 Also, we need to modify `"scripts"` in package.json *to run server.js by using command `$npm start`*
 `"start"` is for running node, `"server"` is for watching with nodemon
 
-```"scripts": {
+```
+"scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-  },```
+  },
+```
 
 then, run with `$ npm run server`. server will automatically reload when something has changed.
+
+## 3. Connect with MongoDB
+
+1. create `/config/keys.js`, then add code below:
+
+```
+module.exports = {
+  /*
+    this is just a way of making this object available outside of this file 
+    because we need to connect to it
+  */
+  mongoURI: 'mongodb://<dbusername>:<dbpassword>@ds157834.mlab.com:57834/mern-experiment'
+}
+```
+
+2. Modify `server.js`
+
+[See actual code](https://github.com/suzydp/MERN-expreriment/commit/1a95f2726fe93787adbedcd40785d3f836a72164)
