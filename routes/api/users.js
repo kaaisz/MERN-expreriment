@@ -57,5 +57,36 @@ router.post('/register', (req, res) => {
     })
 });
 
+// @route    GET api/users/login
+// @desc     Login user / Returning JWT(json web token) token
+// @access   Public - otherwise you can't access!
+router.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // Find user by email from mongoose
+  User.findOne({ email })
+    .then(user => {
+      // Check for user
+      if(!user) {
+        // If user doesn't exist, throw error status
+        return res.status(404).json({ email: 'User not found' });
+      }
+
+      // Check Password by using bcrypt.compare()
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if(isMatch) {
+            // If the password matched, user generate token
+            res.json({ msg: 'Success' });
+          } else {
+            // If the password doesn't match
+            return res.status(400).json({ password: 'Password incorrect' });
+          }
+        });
+    })
+    .catch()
+});
+
 // export the router
 module.exports = router;
