@@ -1,8 +1,13 @@
-// file for entry point
-
+/// -- file for entry point -- ///
 // prepare express and mongoose
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+// extra safe
+mongoose.connect("mongodb://suzy:suzy123@ds161724.mlab.com:61724/mern-experiment", { useNewUrlParser: true })
+  .then(() => console.log("connected to the database"))
+  .catch(err => console.log(err));
 
 // route by importing files
 const users = require('./routes/api/users');
@@ -10,6 +15,10 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
 const app = express();
+
+// body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // DB config
 const db = require('./config/keys').mongoURI;

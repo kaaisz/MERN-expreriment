@@ -17,7 +17,8 @@ const UserSchema = new Schema({
   },
   avatar: {
     type: String,
-    required: true,
+    // this is not necessary because if email is linked with gravatar it works without this
+    // required: true
   },
   date: {
     type: Date,
