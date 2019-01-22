@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 // extra safe
 mongoose.connect("mongodb://suzy:suzy123@ds161724.mlab.com:61724/mern-experiment", { useNewUrlParser: true })
@@ -31,14 +32,12 @@ mongoose
   // if the authentication failed or some other error has found out, throw error message
   .catch(err => console.log(err));
 
-// we're gonna wanna create just a simple route to get something up and and running
-// we'll be putting our routes in different files using the express route.
-// for the first time, we'd love to appear the home page.
-// put route directory, then request and response objects as parameters
-app.get('/', (req, res) => 
-  // {});
-  res.send('Hello, express with node.js')
-);
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config - there's a way of authentication which is using Google, FB, ig, 
+// but in this case we'll use jwt
+require('./config/passport')(passport);// path in the passport itself
 
 // Use routes
 app.use('/api/users/', users);
