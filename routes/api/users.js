@@ -110,9 +110,13 @@ router.post('/login', (req, res) => {
 // @route    GET api/users/current
 // @desc     Return current user
 // @access   Private
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({ msg: 'Success' });
-});
+router.get(
+  '/current', 
+  passport.authenticate('jwt', { session: false }), 
+  (req, res) => {
+    res.json(req.user);
+  }
+);
 
 
 // export the router
