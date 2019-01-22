@@ -6,7 +6,7 @@ const ProfileSchema = new Schema({
 
   // Add properties
   user: {
-    type: Schema.types.ObjectId, // going to associate the user by its ID
+    type: Schema.Types.ObjectId, // going to associate the user by its ID
     ref: 'users',
   },
   handle: {
