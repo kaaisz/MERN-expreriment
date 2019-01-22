@@ -14,7 +14,15 @@ opts.secretOrKey = keys.secretOrKey;
 module.exports = passport => {
   passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
-      console.log(jwt_payload);
+      User.findById(jwt_payload.id)
+        .then(user => {
+          if(user){
+            return done(null, user); // done is the parameter which is used in parameter
+          }
+          // if user isn't found
+          return done(null, false);
+        })
+        .catch(err => console.log(err));
     })
   );
 };

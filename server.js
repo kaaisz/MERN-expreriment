@@ -3,7 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const passport = require('passport');
+const passport = require('passport'); // passport has a lot of authentication
 
 // extra safe
 mongoose.connect("mongodb://suzy:suzy123@ds161724.mlab.com:61724/mern-experiment", { useNewUrlParser: true })
