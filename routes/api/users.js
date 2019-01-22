@@ -9,6 +9,9 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
+// load input validation
+const validateRegisterInput = require('../../validation/register');
+
 // Load user model
 const User = require('../../models/User');
 
@@ -24,6 +27,14 @@ router.get('/test', (req, res) => res.json({msg: "Users Works"})); // output wil
 // @desc     Register user
 // @access   Public - otherwise you can't access!
 router.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body); 
+  //req.body includes everything you need - name, email, password, etc
+
+  // Check validation
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
+
   // identify whether user exists
   User.findOne({ email: req.body.email })
     .then(user => {
