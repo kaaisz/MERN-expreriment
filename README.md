@@ -22,4 +22,4 @@ courtesy for this project repo: https://github.com/bradtravesy/devconnector
 
 ## Creating Process
 
-### [See this Page](https://github.com/suzydp/MERN-expreriment/wiki/Creating-Process)
+### [See this Page](https://github.com/suzydp/MERN-expreriment/wiki/0-Creating-Process-Home)
