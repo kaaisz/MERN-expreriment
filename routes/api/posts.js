@@ -4,12 +4,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const passport = require('passport');
+const passport = require('passport'); // to protect roots
 
-// bring Post model
+// Post model
 const Post = require('../../models/Post');
-// bring Profile model
-const Profile = require('../../models/Post')
+// Profile model
+const Profile = require('../../models/Profile');
 
 // Validation
 const validatePostInput = require('../../validation/post');
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
   Post.find()
     .sort({ date: -1 })
     .then(posts => res.json(posts))
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
 });
 
 
@@ -54,10 +54,10 @@ router.get('/:id', (req, res) => {
 // @desc     Create post
 // @access   Private
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-
+  // Initialize errors and is empty using destructuring 
   const { errors, isValid } = validatePostInput(req.body);
 
-  // Check Validation
+  // Check validation - if isValid was false
   if (!isValid) {
     // If any errors, send 400 with errors object
     return res.status(400).json(errors);
@@ -67,8 +67,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   const newPost = new Post({
     text: req.body.text,
     name: req.body.name,
-    avatar: req.body.avatar, 
     // avatar is from user state in react - redux is gonna keep that users info in state
+    avatar: req.body.avatar,
     user: req.user.id,
   });
 
@@ -85,19 +85,17 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
     .then(profile => {
       Post.findById(req.params.id)
         .then(post => {
-          // Check for post owner
+          // Check for post owner - post has user fields
           if(post.user.toString() !== req.user.id){ 
-            // needs to convert to string to compare both of them
+            // needs to convert to string to compare both of them - 401 is unauthorized status
             return res.status(401).json({ notauthorized: 'User not authorized' });
           }
 
           // Delete
           post.remove().then(() => res.json({ success: true }));
         })
-        .catch(err => res.status(404).json({ postnotfound: 'No post found' }))
+        .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
     })
 });
-
-
 // export the router
 module.exports = router;
