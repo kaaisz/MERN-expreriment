@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class Register extends Component {
   // create component constructor
@@ -36,7 +37,11 @@ class Register extends Component {
       password2: this.state.password2,
     }
 
-    console.log(newUser);
+    // axios will post the data to the database
+    axios.post('api/users/register', newUser)
+      // it supposed to be returned the value in console.log, which is set on server/api
+      .then(result => console.log(result.data))
+      .catch(error => console.log(error.response.data));
   }
 
   render() {
