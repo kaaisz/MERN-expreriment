@@ -56,8 +56,12 @@ class Register extends Component {
     // to handle state to be appear conditional error
     const { errors } = this.state;
 
+    const { user } = this.props.auth;
+
     return (
       <div className="register">
+        {/* if user has a terenary operator */}
+        {user ? user.name : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -130,4 +134,9 @@ class Register extends Component {
     )
   }
 }
-export default connect(null, { registerUser })(Register);
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { registerUser })(Register);
