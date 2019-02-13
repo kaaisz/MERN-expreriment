@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
 
 class Register extends Component {
   // create component constructor
@@ -38,12 +40,15 @@ class Register extends Component {
       password2: this.state.password2,
     }
 
-    // axios will post the data to the database
-    axios.post('api/users/register', newUser)
-      // it supposed to be returned the value in console.log, which is set on server/api
-      .then(result => console.log(result.data))
-      // to show the error which is in state objects
-      .catch(error => this.setState({errors: error.response.data}));
+    // any aciton calls through the props
+    this.props.registerUser(newUser);
+
+    // // axios will post the data to the database
+    // axios.post('api/users/register', newUser)
+    //   // it supposed to be returned the value in console.log, which is set on server/api
+    //   .then(result => console.log(result.data))
+    //   // to show the error which is in state objects
+    //   .catch(error => this.setState({errors: error.response.data}));
   }
 
   render() {
@@ -125,4 +130,4 @@ class Register extends Component {
     )
   }
 }
-export default Register;
+export default connect(null, { registerUser })(Register);

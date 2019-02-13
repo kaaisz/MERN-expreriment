@@ -1,8 +1,9 @@
+import { TEST_DISPATCH } from '../actions/types';
+
 // this is for initializing authorization
 const initialState = {
   isAuthenticated: false,
   user: {},
-  hello: 'test'
 }
 
 // every reducers is gonna export FUNCTION
@@ -10,6 +11,11 @@ const initialState = {
 export default function(state = initialState, action) {
   // below is writing down just a standard javascript:
   switch(action.type) {
+    case TEST_DISPATCH:
+      return {
+        ...state,
+        user: action.payload,
+      }
     default: 
       return state;
   }
