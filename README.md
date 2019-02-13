@@ -41,8 +41,11 @@
 |classnames|to add the conditional classnames||
 |react|fundamentals of react||
 |react-dom|fundamentals of react||
+|react-redux|to combine react and redux easy||
 |react-router-dom|to activate routes for react||
 |react-scripts|which is on create-react-app||
+|redux|fundamentals of redux||
+|redux-thunk|middleware for redux to be much controllable||
 
 
 courtesy for this project repo: https://github.com/bradtravesy/devconnector
