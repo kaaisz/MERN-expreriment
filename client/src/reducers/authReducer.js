@@ -2,6 +2,7 @@
 const initialState = {
   isAuthenticated: false,
   user: {},
+  hello: 'test'
 }
 
 // every reducers is gonna export FUNCTION
