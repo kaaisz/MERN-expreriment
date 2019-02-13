@@ -28,6 +28,7 @@ class Register extends Component {
   onSubmit(event) {
     event.preventDefault();
 
+    // to check the condition for submitting
     const newUser = {
       name: this.state.name,
       email: this.state.email,
